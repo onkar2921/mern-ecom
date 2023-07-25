@@ -1,0 +1,41 @@
+.Orders_main_div{
+    border: 1px solid black;
+    height: auto;
+    width: 100vw;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    padding: 20px;
+    
+}
+
+.Show_Order_div{
+    /* border: 1px solid red; */
+    background-color:#FDF5DF;
+    border-radius: .6em;
+    height: auto;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    margin: 20px;
+
+}
+
+.Show_Order_div h3{
+    margin: 6px;
+    background-color: black;
+    color: whitesmoke;
+    border-radius: .2em;
+    padding: 5px;
+}
+
+
+.Show_Order_div p{
+     margin: 5px;
+    
+}
+

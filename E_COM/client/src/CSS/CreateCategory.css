@@ -1,0 +1,40 @@
+.create_category_div{
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 300px;
+    width: 100vw;
+    background-color:#1A2238;
+
+
+}
+
+
+.category_form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+
+}
+
+
+.category_form button{
+    background-color: black;
+    color:#9DAAF2;
+    padding: 5px;
+    margin: 10px;
+
+}
+
+.category_form input {
+    background-color:#FF6A3D;
+    color:black;
+    padding: 8px;
+    margin: 10px;
+    text-align: center;
+}

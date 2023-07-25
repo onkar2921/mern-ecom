@@ -1,0 +1,35 @@
+.Cart_Card{
+    border: 1px solid black;
+    border-radius: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 390px;
+    text-align: center;
+    padding: 3px;
+    margin: 15px;
+    background-color: antiquewhite;
+
+}
+
+.Cart_Card h1  {
+    margin: 4px;
+    text-align: center;
+}
+
+.Cart_Card p{
+    margin: 2px;
+    text-align: center;
+}
+
+
+.Cart_Card button{
+    border-radius: 1em;
+    border: none;
+    background-color: black;
+    padding: 5px;
+    color: red;
+    text-align: center;
+}

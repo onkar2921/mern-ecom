@@ -1,0 +1,93 @@
+.AdminDshBoard_div{
+
+    border: 1px solid black;
+    height: 470px ;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
+
+
+.info_div{
+/* border:1px solid red; */
+height: 300px;
+width: 50%;
+text-align: center;
+justify-content: center;
+display: flex;
+flex-direction: column;
+border-bottom: 2px solid rgb(179, 175, 175);
+}
+
+.info_div h2{
+width: 100%;
+margin-bottom: 30px;
+background-color: whitesmoke;
+border-radius: 1em;
+
+}
+
+.info_div p{
+padding: 8px;
+
+}
+
+
+.adminLinks a{
+
+text-decoration: none;
+color: black;
+margin: 8px;
+}
+
+.adminLinks{
+border: 1px solid lightgray;
+border-radius: 1em;
+background-color: beige;
+margin-top: 50px;
+height: 80%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+}
+
+.adminLinks a:hover{
+cursor: pointer;
+color: red;
+}
+
+
+.admin_link_info{
+width: 100%;
+/* padding: 20px; */
+display: flex;
+align-items: center;
+justify-content: space-around;
+
+}
+/* 
+.history_div{
+margin-top: 20px;
+height: auto;
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+}
+
+.history_div h2{
+margin-bottom: 10px;
+background-color: azure;
+border-radius: 1em;
+width: 100%;
+text-align: center;
+}
+
+.history_div p{
+padding: 8px;
+} */

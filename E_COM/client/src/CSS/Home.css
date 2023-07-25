@@ -1,0 +1,44 @@
+
+
+
+
+.Home_page_div{
+    
+    /* border: 1px solid black; */
+    height: auto;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #F8E5E5; */
+   background:linear-gradient(#C39EA0,#F8E5E5);
+}
+
+.Home_page_div h2{
+    width: 80%;
+    text-align: center;
+    align-items: center;
+    margin: 40px;
+
+}
+
+.Arival_Product_div{
+    height: auto;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.Sell_Product_div{
+    height: auto;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}

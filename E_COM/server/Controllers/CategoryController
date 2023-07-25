@@ -1,0 +1,74 @@
+const category=require("../Models/CategoryModel")
+
+
+    
+
+const createCategoryController = async (req, res) => {
+    const { name } = req.body;
+    try {
+      const newCategory = await category.create({ name });
+      if (newCategory) {
+        return res.status(200).json({ message: "Category created", newCategory });
+      }
+      return res.status(400).json({ message: "Failed to create category" });
+    } catch (error) {
+      console.log(error.message);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+  }
+
+
+const getAllCategoryController=async(req,res)=>{
+  try {
+    const AllCategory=await category.find({})
+    if(AllCategory){
+      return res.status(200).json({message:"getting all categories",AllCategory})
+    }
+    return res.status(400).json({message:"no category available"})
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const deleteCategoryController=async(req,res)=>{
+  try {
+    const {CategoryId}=req.params
+    const deleteCategory=await category.findByIdAndDelete(CategoryId)
+    if(deleteCategory){
+      return res.status(200).json({message:"category deleted sucessfully"})
+    }
+    return res.status(400).json({message:"failed in deletion of category"})
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const updateCategoryController=async(req,res)=>{
+  try {
+    const {CategoryId}=req.params
+    const {name}=req.body
+    const updateCategory=await category.findByIdAndUpdate(CategoryId,{name},{new:true})
+    if(updateCategory){
+      return res.status(200).json({message:"category updated sucessfully",updateCategory})
+    }
+    return res.status(400).json({message:"failed in updation of category"})
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+const getSingleCategoryController=async(req,res)=>{
+  try {
+    const {CategoryId}=req.params
+    const singleCategory=await category.findById(CategoryId)
+    if(singleCategory){
+      return res.status(200).json({message:"getting single category",singleCategory})
+    }
+    return res.status(400).json({message:"no category exists"})
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+  
+
+module.exports={createCategoryController,getAllCategoryController,deleteCategoryController,updateCategoryController,getSingleCategoryController}

@@ -1,0 +1,53 @@
+.cart_main_div{
+    height: 1000px;
+    width: 100vw;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+
+}
+
+
+
+.Cart_div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    background-color: azure;
+
+}
+
+.Cart_div h2{
+    color: red;
+}
+
+
+.Order_Options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+
+
+}
+
+
+.Order_Options button{
+    border-radius: 1em;
+    border: none;
+    background-color: black;
+    padding: 10px;
+    color:green;
+    text-align: center;
+    margin: 20px;
+    
+
+}
+
