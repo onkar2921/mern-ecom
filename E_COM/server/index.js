@@ -26,9 +26,6 @@ const BrainTreeRoutes=require("./Routes/BrainTree")
 const OrderRoutes=require("./Routes/OrderRoutes")
 // Serve static files from the 'uploads' directory
 
-// app.use("/",(req,res)=>{
-//     res.send("welcome")
-// })
 
 app.use('/uploads', express.static('uploads'));
 
@@ -38,6 +35,9 @@ app.use("/api",ProductRoutes)
 app.use("/api",CartRoutes)
 app.use("/api",BrainTreeRoutes)
 app.use("/api",OrderRoutes)
+app.use("/",(req,res)=>{
+    res.send("helllo apsj")
+})
 
 
 
