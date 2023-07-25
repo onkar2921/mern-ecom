@@ -32,12 +32,12 @@ const OrderRoutes=require("./Routes/OrderRoutes")
 
 app.use('/uploads', express.static('uploads'));
 
-app.use(UserRoute)
-app.use(CategoryRoute)
-app.use(ProductRoutes)
-app.use(CartRoutes)
-app.use(BrainTreeRoutes)
-app.use(OrderRoutes)
+app.use("/api",UserRoute)
+app.use("/api",CategoryRoute)
+app.use("/api",ProductRoutes)
+app.use("/api",CartRoutes)
+app.use("/api",BrainTreeRoutes)
+app.use("/api",OrderRoutes)
 
 
 
