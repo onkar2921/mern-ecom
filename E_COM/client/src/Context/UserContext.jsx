@@ -24,12 +24,13 @@ export function UserContextProvider({children}){
 
     const UserId=localStorage.getItem("UserId")
     const token=localStorage.getItem("token")
+    const apiUrl = process.env.REACT_APP_API_URL;
     const getUserData=async()=>{
        
         // alert(UserId)
         try {
 
-            const response=await axios.get(`http://localhost:8000/userProfile/${UserId}`,{
+            const response=await axios.get(`${apiUrl}/userProfile/${UserId}`,{
                 headers: { authorization: `Bearer ${token}`}
             })
             if(response.status===200){
@@ -53,7 +54,7 @@ export function UserContextProvider({children}){
  
         try {
 
-            const response=await axios.get(`http://localhost:8000/userHistory/${UserId}`,{
+            const response=await axios.get(`${apiUrl}/userHistory/${UserId}`,{
                 headers: { authorization: `Bearer ${token}`}
             })
             if(response.status===200){

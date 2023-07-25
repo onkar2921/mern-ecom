@@ -35,12 +35,14 @@ export default function UpdateUserProfile() {
     setUdserData({ ...userData, [name]: value });
   };
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const handelUpdateProfile = async (e) => {
     e.preventDefault();
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/updateUserProfile/${UserId}`,
+        `${apiUrl}/updateUserProfile/${UserId}`,
         {
           name: userData.name,
           email: userData.email,

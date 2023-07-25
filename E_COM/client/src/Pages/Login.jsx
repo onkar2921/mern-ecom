@@ -32,11 +32,13 @@ export default function Login() {
     setFields({ ...field, [name]: value });
   };
 
+
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handelLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/Login", {
+      const response = await axios.post(`${apiUrl}/Login`, {
         email: field.email,
         password: field.password,
       });

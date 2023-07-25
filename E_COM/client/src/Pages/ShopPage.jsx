@@ -8,10 +8,11 @@ export default function ShopPage() {
   const [categories, setCategories] = useState([]);
 
   const [search, setSearch] = useState("");
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const getCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/getAllCategory");
+      const response = await axios.get(`${apiUrl}/getAllCategory`);
       if (response.status === 200) {
         // alert("get all categories")
         setCategories(response.data.AllCategory);
@@ -59,7 +60,7 @@ export default function ShopPage() {
       // console.log("filter",filters)
 
       const response = await axios.post(
-        "http://localhost:8000/ProductsBySearch",
+        `${apiUrl}/ProductsBySearch`,
         { category: selectCategory, price: selectPrice, search }
       );
 
@@ -82,7 +83,7 @@ export default function ShopPage() {
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/getAllProducts");
+      const response = await axios.get(`${apiUrl}/getAllProducts`);
 
       if (response.status === 200) {
         setAllProducts(response.data.productsWithImages);

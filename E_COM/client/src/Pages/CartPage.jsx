@@ -27,10 +27,14 @@ export default function CartPage() {
   
   const { cart, Userdispatch } = useContext(UserContext);
 
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+
   const getCartData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/getUserCart/${UserId}`,
+        `${apiUrl}/getUserCart/${UserId}`,
         { headers: { authorization: `Bearer ${token}` } }
         );
         if (response.status === 200) {
@@ -81,7 +85,7 @@ export default function CartPage() {
 
       const { nonce } = await instance.requestPaymentMethod();
       const response = await axios.post(
-        `http://localhost:8000/braintree/payments/${UserId}`,
+        `${apiUrl}/braintree/payments/${UserId}`,
         {
           amount: sum,
           paymentMethodNonce: nonce,
@@ -110,7 +114,7 @@ export default function CartPage() {
     try {
       if (ProccedOrder) {
         const response = await axios.post(
-          `http://localhost:8000/createOrder/${UserId}`,
+          `${apiUrl}/createOrder/${UserId}`,
           {
             Products: cart,
             amount: sum,

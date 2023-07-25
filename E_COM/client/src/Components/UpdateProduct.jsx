@@ -34,6 +34,10 @@ export default function UpdateProduct({
     quantity: "",
   });
 
+
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const handelCategory = (e) => {
     setCategory(e.target.value);
   };
@@ -47,7 +51,7 @@ export default function UpdateProduct({
     e.preventDefault();
     try {
       const response = await axios.patch(
-        `http://localhost:8000/updateProduct/${AdminId}/${ProductId}`,
+        `${apiUrl}/updateProduct/${AdminId}/${ProductId}`,
         {
           name: productData.name,
           description: productData.description,

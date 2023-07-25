@@ -23,10 +23,11 @@ export default function UpdateDeletePage() {
   let token = localStorage.getItem("token");
   let AdminId = localStorage.getItem("UserId");
   const [products, setProducts] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const getAllProducts = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/getAllProducts");
+      const response = await axios.get(`${apiUrl}/getAllProducts`);
 
       if (response.status === 200) {
         setProducts(response.data.productsWithImages);
@@ -46,7 +47,7 @@ export default function UpdateDeletePage() {
 
   const getCategories = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/getAllCategory");
+      const response = await axios.get(`${apiUrl}/getAllCategory`);
       if (response.status === 200) {
         setCategories(response.data.AllCategory);
       } else {
@@ -65,7 +66,7 @@ export default function UpdateDeletePage() {
     e.preventDefault();
     try {
       const response = await axios.delete(
-        `http://localhost:8000/deleteProduct/${AdminId}/${productId}`,
+        `${apiUrl}/deleteProduct/${AdminId}/${productId}`,
         {
           headers: { authorization: `Bearer ${token}` },
         }

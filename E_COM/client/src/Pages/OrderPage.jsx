@@ -25,10 +25,13 @@ export default function OrderPage() {
 
   const [order, setOrder] = useState([]);
 
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const getAllOrders = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/getOrders/${AdminId}`,
+        `${apiUrl}/getOrders/${AdminId}`,
         { headers: { authorization: `Bearer ${token}` } }
       );
       console.log("orders---", response.data.AllOrders);
@@ -48,7 +51,7 @@ export default function OrderPage() {
   const getStatus = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/getStatus/${AdminId}`,
+        `${apiUrl}/getStatus/${AdminId}`,
         { headers: { authorization: `Bearer ${token}` } }
       );
       console.log("orders---", response.data.AllOrders);
@@ -71,7 +74,7 @@ export default function OrderPage() {
   const handelOrderStatus = async (OrderId, status) => {
     try {
       const response = await axios.patch(
-        `http://localhost:8000/updateStatus/${AdminId}`,
+        `${apiUrl}/updateStatus/${AdminId}`,
         { OrderId, status },
         { headers: { authorization: `Bearer ${token}` } }
       );

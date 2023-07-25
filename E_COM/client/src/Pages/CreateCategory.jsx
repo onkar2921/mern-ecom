@@ -21,6 +21,9 @@ const notify = (message) =>
 export default function CreateCategory() {
   const [name, setName] = useState("");
 
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const handelCreateCategory = async (e) => {
     e.preventDefault();
     let AdminId = localStorage.getItem("UserId");
@@ -28,7 +31,7 @@ export default function CreateCategory() {
     // console.log("hitting")
 
     const response = await axios.post(
-      `http://localhost:8000/createCategory/${AdminId}`,
+      `${apiUrl}/createCategory/${AdminId}`,
       {
         //data
         name,

@@ -8,11 +8,12 @@ import ProductCard from "../Components/ProductCard";
 export default function ProductPage() {
   const [ProductData, setProductData] = useState([]);
   const { ProductId } = useParams();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const getProductInfo = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/getSingleProduct/${ProductId}`
+        `${apiUrl}/getSingleProduct/${ProductId}`
       );
 
       if (response.status === 200) {
@@ -30,7 +31,7 @@ export default function ProductPage() {
   const getRelatedProduct = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/getRelatedProducts/${ProductId}`
+        `${apiUrl}/getRelatedProducts/${ProductId}`
       );
       if (response.status === 200) {
         setRelatedProduct(response.data.productsWithImages);

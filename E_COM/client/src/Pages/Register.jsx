@@ -34,11 +34,13 @@ export default function Register() {
     setFields({ ...field, [name]: value, role: !field.role });
   };
 
+
+  const apiUrl = process.env.REACT_APP_API_URL;
   const handelRegister = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:8000/Register", {
+      const response = await axios.post(`${apiUrl}/Register`, {
         name: field.name,
         email: field.email,
         password: field.password,

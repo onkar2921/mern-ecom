@@ -18,6 +18,10 @@ const notify = (message) =>
   });
 
 export default function CartCard(props) {
+
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+
   const handelDecrementProduct = async () => {
     const UserId = localStorage.getItem("UserId");
 
@@ -25,7 +29,7 @@ export default function CartCard(props) {
 
     try {
       const response = await axios.patch(
-        `http://localhost:8000/decrementProductCount/${UserId}`,
+        `${apiUrl}/decrementProductCount/${UserId}`,
         { ProductId: props.id },
         { headers: { authorization: `Bearer ${token}` } }
       );
