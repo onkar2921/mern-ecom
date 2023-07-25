@@ -26,9 +26,9 @@ const BrainTreeRoutes=require("./Routes/BrainTree")
 const OrderRoutes=require("./Routes/OrderRoutes")
 // Serve static files from the 'uploads' directory
 
-app.use("/",(req,res)=>{
-    res.send("welcome")
-})
+// app.use("/",(req,res)=>{
+//     res.send("welcome")
+// })
 
 app.use('/uploads', express.static('uploads'));
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+const REACT_APP_API_URL =process.env.REACT_APP_API_URL
 
 export const UserReducer = (state, action) => {
   switch (action.type) {
@@ -23,7 +24,7 @@ export const UserReducer = (state, action) => {
       const getHistory = async () => {
         try {
           const response = await axios.post(
-            `http://localhost:8000/addToCart/${action.payload.UserId}`,
+            `${REACT_APP_API_URL}/addToCart/${action.payload.UserId}`,
             { ProductId: action.payload.id, count: action.payload.count },
             {
               headers: { authorization: `Bearer ${action.payload.token}` },

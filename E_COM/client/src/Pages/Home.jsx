@@ -39,7 +39,7 @@ const [productByArival,setProductByArival]=useState([])
 <div className="Arival_Product_div">
   
   {
-    productByArival.map((item)=>{
+    productByArival?.map((item)=>{
       console.log({photo:item.photo})
       return<>
           <ProductCard key={item._id}  id={item._id} name={item.name} description={item.description} price={item.price} photo={item?.photo}></ProductCard>
@@ -53,7 +53,7 @@ const [productByArival,setProductByArival]=useState([])
   
   <div className="Sell_Product_div">
   {
-    productBySell.map((item)=>{
+    productBySell?.map((item)=>{
       return<>
           <ProductCard key={item._id}  id={item._id} name={item.name} description={item.description} price={item.price} photo={item?.photo}></ProductCard>
       </>
