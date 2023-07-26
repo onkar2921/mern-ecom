@@ -29,18 +29,12 @@ const {
     AdminMiddleware,
     updateProductController
     );
-    
-
-
+    route.post("/createProducut/:AdminId", AdminMiddleware, createProductController);
     route.delete(
       "/deleteProduct/:AdminId/:ProductId",
   AdminMiddleware,
   deleteProductController
 );
-
-
-
-
 route.get("/getProductsList", productListController);
 route.get("/getRelatedProducts/:ProductId", getRelatedProductsController);
 route.get("/getCategoryOfProducts", getCategoriesOfProductController);
