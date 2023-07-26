@@ -18,7 +18,6 @@ const {
 route.post(
   "/createProduct/:AdminId",
   AdminMiddleware,
-  upload.single("photo"),
   createProductController
 );
 route.get("/getAllProducts", getAllProductsController);

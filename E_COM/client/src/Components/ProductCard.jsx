@@ -31,7 +31,7 @@ export default function ProductCard(props) {
       <div className="product_card_main_div">
         <div className="card_info_div">
           <h2>{props.name}</h2>
-          <img src={props.photo} alt="image" />
+          <img src={props.photo} alt={props.photo} />
           <p>{props.description}</p>
           <p>{props.price}</p>
         </div>

@@ -1,31 +1,90 @@
+
 const product = require("../Models/ProductModel");
+const cloudinary = require('cloudinary').v2;
+
+// const createProductController = async (req, res) => {
+//   try {
+   
+
+//     const { name, description, price, category, shipping, quantity } = req.body;
+//     res.send(req.body)
+//     console.log("body", req.files.photo);
+    
+//     const photo = req.files.photo;
+//     cloudinary.uploader.upload(photo.tempFilePath, {
+//     folder:"photos"
+    
+//     },async(err, result) => {
+//       if (err) {
+//         console.error("Error uploading to Cloudinary:", err);
+//         return res.status(500).json({ error: 'Failed to upload image' });
+//       }
+//       console.log("img cloudinary", result.url);
+     
+     
+      
+      
+      
+//       const newProduct = await product.create({
+//       name,
+//       price,
+//       description,
+//       category,
+//       shipping,
+//       photo:result.url,
+//       quantity,
+//     });
+    
+//     if (newProduct) {
+//         return res.status(200).json({ message: "product created", newProduct });
+//       }
+//     });
+//     return res.status(400).json({ message: "failed in creation of product" });
+//   } catch (error) {
+//     console.log(error.message);
+//   }
+// };
+
+
 const createProductController = async (req, res) => {
   try {
-    let photo = null;
-    if (req.file) {
-      photo = req.file.filename;
-    }
-
     const { name, description, price, category, shipping, quantity } = req.body;
+    console.log("body", req.files.photo);
+    
+    const photo = req.files.photo;
+    cloudinary.uploader.upload(photo.tempFilePath, {
+      folder: "photos"
+    }, async (err, result) => {
+      if (err) {
+        console.error("Error uploading to Cloudinary:", err);
+        return res.status(500).json({ error: 'Failed to upload image' });
+      }
+      console.log("img cloudinary", result.url);
+      
+      const newProduct = await product.create({
+        name,
+        price,
+        description,
+        category,
+        shipping,
+        photo: result.url,
+        quantity,
+      });
 
-    const newProduct = await product.create({
-      name,
-      price,
-      description,
-      category,
-      shipping,
-      photo,
-      quantity,
+      if (newProduct) {
+        return res.status(200).json({ message: "product created", newProduct });
+      } else {
+        return res.status(400).json({ message: "failed in creation of product" });
+      }
     });
-
-    if (newProduct) {
-      return res.status(200).json({ message: "product created", newProduct });
-    }
-    return res.status(400).json({ message: "failed in creation of product" });
   } catch (error) {
     console.log(error.message);
+    return res.status(500).json({ error: "Server error" });
   }
 };
+
+
+
 
 const getsingleProductController = async (req, res) => {
   try {
@@ -36,10 +95,10 @@ const getsingleProductController = async (req, res) => {
       .populate("category");
 
     if (singleProduct) {
-      const productWithImage = singleProduct.toObject();
+      // const productWithImage = singleProduct.toObject();
 
-      productWithImage.photo = `${req.protocol}://${req.get("host")}/uploads/${singleProduct.photo}`;
-      return res.status(200).json({message: "Getting single product",getProduct: productWithImage,});
+      // productWithImage.photo = `${req.protocol}://${req.get("host")}/uploads/${singleProduct.photo}`;
+      return res.status(200).json({message: "Getting single product",singleProduct,});
     }
 
   
@@ -62,20 +121,20 @@ const getAllProductsController = async (req, res) => {
     // }
 
     
-    if (Products.length > 0) {
-      const productsWithImages = Products.map(product => {
-        const productWithImage = product.toObject();
-        // Assuming the photo filenames are stored in the "photo" property of each product
-        productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-        return productWithImage;
-      })
+    // if (Products.length > 0) {
+    //   const productsWithImages = Products.map(product => {
+    //     const productWithImage = product.toObject();
+    //     // Assuming the photo filenames are stored in the "photo" property of each product
+    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
+    //     return productWithImage;
+    //   })
       
-      if (productsWithImages) {
+      if (Products) {
         return res
         .status(200)
-        .json({ message: "getting all products", productsWithImages });
+        .json({ message: "getting all products", Products });
       }
-    }
+    
     return res.status(400).json({ message: "no products found" });
   } catch (error) {
     console.log(error.message);
@@ -153,20 +212,20 @@ const productListController = async (req, res) => {
 
 
 
-    if (Products.length > 0) {
-      const productsWithImages = Products.map(product => {
-        const productWithImage = product.toObject();
-        // Assuming the photo filenames are stored in the "photo" property of each product
-        productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-        return productWithImage;
-      })
+    // if (Products.length > 0) {
+    //   const productsWithImages = Products.map(product => {
+    //     const productWithImage = product.toObject();
+    //     // Assuming the photo filenames are stored in the "photo" property of each product
+    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
+    //     return productWithImage;
+    //   })
       
       if (Products) {
         return res
         .status(200)
-        .json({ message: "getting all products", productsWithImages });
+        .json({ message: "getting all products", Products });
       }
-    }
+    
       return res.status(400).json({ message: "no products found" });
   } catch (error) {
     console.log(error.message);
@@ -190,20 +249,20 @@ const getRelatedProductsController = async (req, res) => {
     //   }`;
     // }
 
-    if (Products.length > 0) {
-      const productsWithImages = Products.map(product => {
-        const productWithImage = product.toObject();
-        // Assuming the photo filenames are stored in the "photo" property of each product
-        productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-        return productWithImage;
-      })
+    // if (Products.length > 0) {
+    //   const productsWithImages = Products.map(product => {
+    //     const productWithImage = product.toObject();
+    //     // Assuming the photo filenames are stored in the "photo" property of each product
+    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
+    //     return productWithImage;
+    //   })
       
       if (Products) {
         return res
         .status(200)
-        .json({ message: "getting all products", productsWithImages });
+        .json({ message: "getting all products", Products });
       }
-    }
+    
     return res.status(400).json({ message: "no products found" });
   } catch (error) {
     console.log(error.message);
@@ -295,21 +354,21 @@ if(search!==""){
     //   }`;
     // }
     
-    if (Products.length > 0) {
-      const productsWithImages = Products.map(product => {
-        const productWithImage = product.toObject();
-        // Assuming the photo filenames are stored in the "photo" property of each product
-        productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-        return productWithImage;
-      })
+    // if (Products.length > 0) {
+    //   const productsWithImages = Products.map(product => {
+    //     const productWithImage = product.toObject();
+    //     // Assuming the photo filenames are stored in the "photo" property of each product
+    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
+    //     return productWithImage;
+    //   })
       
       
       if (Products) {
         return res
         .status(200)
-        .json({ message: "getting all products", productsWithImages });
+        .json({ message: "getting all products", Products });
       }
-    }
+    
       return res.status(400).json({ message: "no products found" });
     } catch (error) {
         console.log(error.message)

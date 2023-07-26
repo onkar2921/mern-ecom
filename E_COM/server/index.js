@@ -2,6 +2,8 @@ const express =require("express")
 const app=express()
 require("dotenv").config()
 const cors=require("cors")
+const cloudinary = require('cloudinary').v2;
+const fileUpload = require('express-fileupload');
 
 app.use(express.json())
 app.use(cors())
@@ -15,6 +17,19 @@ const ConnnectDB=require("./Connections/DB")
 ConnnectDB()
 
 
+app.use(fileUpload({
+    useTempFiles: true
+  }));
+  
+
+//cloudinary configs
+
+cloudinary.config({ 
+    cloud_name: process.env.CLOUD_NAME, 
+    api_key: process.env.API_KEY, 
+    api_secret: process.env.API_SECRET  
+  });
+
 
 //Routes
 
@@ -27,7 +42,7 @@ const OrderRoutes=require("./Routes/OrderRoutes")
 // Serve static files from the 'uploads' directory
 
 
-app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
 
 app.use("/api",UserRoute)
 app.use("/api",CategoryRoute)
@@ -35,10 +50,29 @@ app.use("/api",ProductRoutes)
 app.use("/api",CartRoutes)
 app.use("/api",BrainTreeRoutes)
 app.use("/api",OrderRoutes)
-app.use("/",(req,res)=>{
+
+
+app.post('/upload', (req, res) => {
+        console.log("body", req.files.file);
+    const file = req.files.file;
+    cloudinary.uploader.upload(file.tempFilePath, {
+    folder:"photos"
+    
+    },(err, result) => {
+      if (err) {
+        console.error("Error uploading to Cloudinary:", err);
+        return res.status(500).json({ error: 'Failed to upload image' });
+      }
+      console.log("img cloudinary", result);
+      return res.status(200).json({ success: 'Image uploaded to Cloudinary' });
+    });
+  });
+  
+
+
+  app.use("/",(req,res)=>{
     res.send("helllo apsj")
 })
-
 
 
 
