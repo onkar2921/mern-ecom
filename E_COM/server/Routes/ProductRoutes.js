@@ -3,7 +3,7 @@ const route = express.Router();
 const { AdminMiddleware } = require("../Middlewares/AdminMiddleware");
 
 const {
-  createProductController,
+  ProductCreateController,
   getsingleProductController,
   getAllProductsController,
   deleteProductController,
@@ -29,7 +29,11 @@ const {
     AdminMiddleware,
     updateProductController
     );
-    route.post("/createProducut/:AdminId", AdminMiddleware, createProductController);
+    // route.post("/createProducut/:AdminId", AdminMiddleware, createProductController);
+    
+    route.post("/productCreate/:AdminId",AdminMiddleware,ProductCreateController)
+
+
     route.delete(
       "/deleteProduct/:AdminId/:ProductId",
   AdminMiddleware,

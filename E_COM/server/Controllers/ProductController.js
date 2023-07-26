@@ -5,7 +5,7 @@ const cloudinary = require('cloudinary').v2;
 
 
 
-const createProductController = async (req, res) => {
+const ProductCreateController = async (req, res) => {
   try {
 
 
@@ -263,7 +263,7 @@ if(search!==""){
 
 
 module.exports = {
-  createProductController,
+  ProductCreateController,
   getsingleProductController,
   getAllProductsController,
   deleteProductController,
