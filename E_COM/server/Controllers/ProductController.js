@@ -2,48 +2,7 @@
 const product = require("../Models/ProductModel");
 const cloudinary = require('cloudinary').v2;
 
-// const createProductController = async (req, res) => {
-//   try {
-   
 
-//     const { name, description, price, category, shipping, quantity } = req.body;
-//     res.send(req.body)
-//     console.log("body", req.files.photo);
-    
-//     const photo = req.files.photo;
-//     cloudinary.uploader.upload(photo.tempFilePath, {
-//     folder:"photos"
-    
-//     },async(err, result) => {
-//       if (err) {
-//         console.error("Error uploading to Cloudinary:", err);
-//         return res.status(500).json({ error: 'Failed to upload image' });
-//       }
-//       console.log("img cloudinary", result.url);
-     
-     
-      
-      
-      
-//       const newProduct = await product.create({
-//       name,
-//       price,
-//       description,
-//       category,
-//       shipping,
-//       photo:result.url,
-//       quantity,
-//     });
-    
-//     if (newProduct) {
-//         return res.status(200).json({ message: "product created", newProduct });
-//       }
-//     });
-//     return res.status(400).json({ message: "failed in creation of product" });
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// };
 
 
 const createProductController = async (req, res) => {
@@ -111,24 +70,7 @@ const getsingleProductController = async (req, res) => {
 const getAllProductsController = async (req, res) => {
   try {
     const Products = await product.find({}).populate("category");
-
-    // for (i = 0; i < Products.length; i++) {
-    //   let productWithImage = Products[i].toObject();
-
-    //   productWithImage.photo = `${req.protocol}://${req.get("host")}/uploads/${
-    //     Products[i].photo
-    //   }`;
-    // }
-
-    
-    // if (Products.length > 0) {
-    //   const productsWithImages = Products.map(product => {
-    //     const productWithImage = product.toObject();
-    //     // Assuming the photo filenames are stored in the "photo" property of each product
-    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-    //     return productWithImage;
-    //   })
-      
+      console.log(Products)
       if (Products) {
         return res
         .status(200)
@@ -202,23 +144,8 @@ const productListController = async (req, res) => {
       .sort([[sortBy, order]])
       .limit(limit);
 
-    // for (i = 0; i < Products.length; i++) {
-    //   let productWithImage = Products[i].toObject();
-
-    //   productWithImage.photo = `${req.protocol}://${req.get("host")}/uploads/${
-    //     Products[i].photo
-    //   }`;
-    // }
-
-
-
-    // if (Products.length > 0) {
-    //   const productsWithImages = Products.map(product => {
-    //     const productWithImage = product.toObject();
-    //     // Assuming the photo filenames are stored in the "photo" property of each product
-    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-    //     return productWithImage;
-    //   })
+   
+    
       
       if (Products) {
         return res
@@ -241,21 +168,7 @@ const getRelatedProductsController = async (req, res) => {
     // const Products = await product.find({ category: baseProduct.category}).limit(limit).select("-ProductId");
 
     const Products=await product.find({_id:{$ne:ProductId},category:baseProduct.category}).limit(limit).populate("category")
-    // for (i = 0; i < Products.length; i++) {
-    //   let productWithImage = Products[i].toObject();
-
-    //   productWithImage.photo = `${req.protocol}://${req.get("host")}/uploads/${
-    //     Products[i].photo
-    //   }`;
-    // }
-
-    // if (Products.length > 0) {
-    //   const productsWithImages = Products.map(product => {
-    //     const productWithImage = product.toObject();
-    //     // Assuming the photo filenames are stored in the "photo" property of each product
-    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-    //     return productWithImage;
-    //   })
+   
       
       if (Products) {
         return res
@@ -285,25 +198,7 @@ const getCategoriesOfProductController=async(req,res)=>{
 const SearchProductsController=async(req,res)=>{
     try {
 
-        // let order=req.query.order?req.query.order:"desc"
-        // let sortBy=req.query.sortBy?req.query.sortBy:"_id"
-        // let limit=req.query.limit?req.query.limit:100
-        
-        
-        // let findArgs={}
-
-        // for(let key in req.body.filters){
-        //     if(req.body.filters[key].length>0){
-        //         findArgs[key]={
-        //             $gte:req.body.filters[key][0],
-        //             $lte:req.body.filters[key][1]
-        //         }
-                
-        //     }else{
-        //         findArgs[key]=req.body.filters[key]
-        //     }
-        // }
-
+      
       
 const {category,price,search}=req.body
 
@@ -346,21 +241,7 @@ if(search!==""){
         // .limit(limit).sort([[sortBy,order]])
 
         
-    // for (i = 0; i < Products.length; i++) {
-    //   let productWithImage = Products[i].toObject();
-
-    //   productWithImage.photo = `${req.protocol}://${req.get("host")}/uploads/${
-    //     Products[i].photo
-    //   }`;
-    // }
-    
-    // if (Products.length > 0) {
-    //   const productsWithImages = Products.map(product => {
-    //     const productWithImage = product.toObject();
-    //     // Assuming the photo filenames are stored in the "photo" property of each product
-    //     productWithImage.photo = `${req.protocol}://${req.get('host')}/uploads/${product.photo}`;
-    //     return productWithImage;
-    //   })
+   
       
       
       if (Products) {

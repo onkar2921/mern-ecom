@@ -17,7 +17,7 @@ export default function ProductPage() {
       );
 
       if (response.status === 200) {
-        setProductData(response.data.getProduct);
+        setProductData(response.data?.singleProduct);
       } else {
         alert(response.statusText);
       }
@@ -34,7 +34,7 @@ export default function ProductPage() {
         `${apiUrl}/getRelatedProducts/${ProductId}`
       );
       if (response.status === 200) {
-        setRelatedProduct(response.data.productsWithImages);
+        setRelatedProduct(response.data?.Products);
       } else {
         // alert(response.statusText)
       }

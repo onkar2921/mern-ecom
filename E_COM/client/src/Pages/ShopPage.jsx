@@ -65,7 +65,7 @@ export default function ShopPage() {
       );
 
       if (response.status === 200) {
-        setSearchProductData(response.data.productsWithImages);
+        setSearchProductData(response.data?.Products);
       } else {
         alert(response.statusText);
       }
@@ -86,7 +86,7 @@ export default function ShopPage() {
       const response = await axios.get(`${apiUrl}/getAllProducts`);
 
       if (response.status === 200) {
-        setAllProducts(response.data.productsWithImages);
+        setAllProducts(response.data?.Products);
       } else {
         alert(response.statusText);
       }
@@ -170,7 +170,7 @@ export default function ShopPage() {
             })
           ) : (
             <>
-              {allProducts.map((item) => {
+              {allProducts?.map((item) => {
                 return (
                   <ProductCard
                     key={item._id}

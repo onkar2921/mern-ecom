@@ -12,7 +12,7 @@ const [productByArival,setProductByArival]=useState([])
   const ProductsBySellRequest=()=>{
    getProducts ("getProductsList" , "sold").then((data)=>{
     console.log("data for sold",data)
-    setProductBySell(data.productsWithImages)
+    setProductBySell(data?.Products)
    })
  
   }
@@ -20,8 +20,8 @@ const [productByArival,setProductByArival]=useState([])
 
   const ProductsByArivalRequest=()=>{
     getProducts ("getProductsList" , "createdAt").then((data)=>{
-      console.log("data",data.productsWithImages)
-     setProductByArival(data.productsWithImages)
+      console.log("data",data?.Products)
+     setProductByArival(data?.Products)
     })
   
    }

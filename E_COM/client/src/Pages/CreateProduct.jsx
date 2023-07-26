@@ -18,8 +18,7 @@ const notify = (message) =>
     theme: "light",
   });
 
-
-  const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export default function CreateProduct() {
   const [categories, setCategories] = useState([]);
