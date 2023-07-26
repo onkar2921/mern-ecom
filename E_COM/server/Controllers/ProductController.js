@@ -7,7 +7,7 @@ const cloudinary = require('cloudinary').v2;
 
 const createProductController = async (req, res) => {
   try {
-return res.send("hey")
+
 
   
     const { name, description, price, category, shipping, quantity } = req.body;

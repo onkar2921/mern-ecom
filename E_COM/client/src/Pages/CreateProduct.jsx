@@ -88,7 +88,7 @@ export default function CreateProduct() {
     // console.log("from data", formdata);
 
     const response = await axios.post(
-      `${apiUrl}/createProduct/${AdminId}`,
+      `${apiUrl}/createProducut/${AdminId}`,
       formdata,
       {
         headers: { authorization: `Bearer ${token}` },

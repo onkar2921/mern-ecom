@@ -1,7 +1,6 @@
 const express = require("express");
 const route = express.Router();
 const { AdminMiddleware } = require("../Middlewares/AdminMiddleware");
-const upload = require("../Middlewares/MulterMiddleware");
 
 const {
   createProductController,
@@ -12,12 +11,18 @@ const {
   productListController,
   getRelatedProductsController,
   getCategoriesOfProductController,
-  SearchProductsController
+  SearchProductsController,
 } = require("../Controllers/ProductController");
 
+route.post("/createProducut/:AdminId", AdminMiddleware, createProductController);
 
 
-route.post("createProducut/:AdminId",AdminMiddleware,createProductController)
+// route.post("/temp",(req,res)=>{
+//   res.send("fsvofdbv")
+// })
+
+
+
 route.get("/getAllProducts", getAllProductsController);
 route.get("/getSingleProduct/:ProductId", getsingleProductController);
 route.patch(
@@ -32,8 +37,7 @@ route.delete(
 );
 route.get("/getProductsList", productListController);
 route.get("/getRelatedProducts/:ProductId", getRelatedProductsController);
-route.get("/getCategoryOfProducts",getCategoriesOfProductController)
-route.post("/ProductsBySearch",SearchProductsController)
-
+route.get("/getCategoryOfProducts", getCategoriesOfProductController);
+route.post("/ProductsBySearch", SearchProductsController);
 
 module.exports = route;
