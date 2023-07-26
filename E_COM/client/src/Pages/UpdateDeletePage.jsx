@@ -30,7 +30,8 @@ export default function UpdateDeletePage() {
       const response = await axios.get(`${apiUrl}/getAllProducts`);
 
       if (response.status === 200) {
-        setProducts(response.data?.products);
+        setProducts(response.data?.Products);
+       
       } else {
         alert(response.statusText);
       }

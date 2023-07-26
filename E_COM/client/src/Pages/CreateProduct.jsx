@@ -83,8 +83,9 @@ export default function CreateProduct() {
     formdata.append("quantity", productData.qunatity);
 
     formdata.append("photo", photo);
+    // console.log("photo form data",photo)
 
-    console.log("from data", formdata);
+    // console.log("from data", formdata);
 
     const response = await axios.post(
       `${apiUrl}/createProduct/${AdminId}`,

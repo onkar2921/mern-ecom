@@ -7,10 +7,12 @@ const cloudinary = require('cloudinary').v2;
 
 const createProductController = async (req, res) => {
   try {
+return res.send("hey")
+
+  
     const { name, description, price, category, shipping, quantity } = req.body;
-    console.log("body", req.files.photo);
-    
-    const photo = req.files.photo;
+ 
+    const photo =await  req.files.photo;
     cloudinary.uploader.upload(photo.tempFilePath, {
       folder: "photos"
     }, async (err, result) => {
@@ -19,6 +21,7 @@ const createProductController = async (req, res) => {
         return res.status(500).json({ error: 'Failed to upload image' });
       }
       console.log("img cloudinary", result.url);
+   
       
       const newProduct = await product.create({
         name,
@@ -30,7 +33,7 @@ const createProductController = async (req, res) => {
         quantity,
       });
 
-      if (newProduct) {
+      if ( newProduct) {
         return res.status(200).json({ message: "product created", newProduct });
       } else {
         return res.status(400).json({ message: "failed in creation of product" });

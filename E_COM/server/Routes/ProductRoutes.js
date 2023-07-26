@@ -15,11 +15,9 @@ const {
   SearchProductsController
 } = require("../Controllers/ProductController");
 
-route.post(
-  "/createProduct/:AdminId",
-  AdminMiddleware,
-  createProductController
-);
+
+
+route.post("createProducut/:AdminId",AdminMiddleware,createProductController)
 route.get("/getAllProducts", getAllProductsController);
 route.get("/getSingleProduct/:ProductId", getsingleProductController);
 route.patch(
