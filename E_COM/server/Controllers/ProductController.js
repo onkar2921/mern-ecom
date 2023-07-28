@@ -6,6 +6,8 @@ const ProductCreateController = async (req, res) => {
     const { name, description, price, category, shipping, quantity } = req.body;
 
     const photo = req.files.photo;
+
+    console.log("photo from client",photo)
     cloudinary.uploader.upload(
       photo.tempFilePath,
       {
