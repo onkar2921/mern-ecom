@@ -6,7 +6,9 @@ const cloudinary = require('cloudinary').v2;
 const fileUpload = require('express-fileupload');
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+  origin:"https://mern-ecom-front-end.vercel.app"
+}))
 
 const port=process.env.PORT || 8080
 
