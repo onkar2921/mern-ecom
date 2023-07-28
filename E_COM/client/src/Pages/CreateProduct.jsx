@@ -91,7 +91,10 @@ export default function CreateProduct() {
       `${apiUrl}/productCreate/${AdminId}`,
       formdata,
       {
-        headers: { authorization: `Bearer ${token}` },
+        headers: { authorization: `Bearer ${token}`,
+        "Access-Control-Allow-Origin":"*"
+      },
+       
       }
     );
 
