@@ -7,7 +7,7 @@ const fileUpload = require('express-fileupload');
 
 app.use(express.json())
 app.use(cors({
-  origin:"https://mern-ecom-front-end.vercel.app"
+   origin:'*'
 }))
 
 const port=process.env.PORT || 8080

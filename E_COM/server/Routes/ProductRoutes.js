@@ -14,28 +14,23 @@ const {
   SearchProductsController,
 } = require("../Controllers/ProductController");
 
-
-
 // route.post("/temp",(req,res)=>{
-  //   res.send("fsvofdbv")
-  // })
-  
-  
-  
-  route.get("/getAllProducts", getAllProductsController);
-  route.get("/getSingleProduct/:ProductId", getsingleProductController);
-  route.patch(
-    "/updateProduct/:AdminId/:ProductId",
-    AdminMiddleware,
-    updateProductController
-    );
-    // route.post("/createProducut/:AdminId", AdminMiddleware, createProductController);
-    
-    route.post("/productCreate/:AdminId",AdminMiddleware,ProductCreateController)
+//   res.send("fsvofdbv")
+// })
 
+route.get("/getAllProducts", getAllProductsController);
+route.get("/getSingleProduct/:ProductId", getsingleProductController);
+route.patch(
+  "/updateProduct/:AdminId/:ProductId",
+  AdminMiddleware,
+  updateProductController
+);
+// route.post("/createProducut/:AdminId", AdminMiddleware, createProductController);
 
-    route.delete(
-      "/deleteProduct/:AdminId/:ProductId",
+route.post("/productCreate/:AdminId", AdminMiddleware, ProductCreateController);
+
+route.delete(
+  "/deleteProduct/:AdminId/:ProductId",
   AdminMiddleware,
   deleteProductController
 );
