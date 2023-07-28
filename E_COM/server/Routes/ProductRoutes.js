@@ -27,7 +27,9 @@ route.patch(
 );
 // route.post("/createProducut/:AdminId", AdminMiddleware, createProductController);
 
-route.post("/productCreate/:AdminId", AdminMiddleware, ProductCreateController);
+
+route.post("/createProductRoute/:AdminId",AdminMiddleware,ProductCreateController)
+
 
 route.delete(
   "/deleteProduct/:AdminId/:ProductId",
