@@ -7,11 +7,11 @@ const RegisterController=async(req,res)=>{
 
     try {
 
-        const {name,email,password,role}=req.body
+        const {name,email,password}=req.body
 
         const hashPwd=bcrypt.hashSync(password,12)
 
-        const NewUser=await user.create({name,email,password:hashPwd,role})
+        const NewUser=await user.create({name,email,password:hashPwd})
 
         if(NewUser){
             return res.status(200).json({message:"user created sucessfully",NewUser})

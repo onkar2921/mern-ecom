@@ -26,12 +26,12 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
-    role: 0,
+  
   });
 
   const handelChange = (e) => {
     const { name, value } = e.target;
-    setFields({ ...field, [name]: value, role: !field.role });
+    setFields({ ...field, [name]: value,});
   };
 
 
@@ -44,7 +44,7 @@ export default function Register() {
         name: field.name,
         email: field.email,
         password: field.password,
-        role: field.role,
+       
       });
 
       if (response.status === 200) {
@@ -55,7 +55,7 @@ export default function Register() {
           name: "",
           email: "",
           password: "",
-          role: 0,
+         
         });
       } else {
         // alert(response.statusText)
@@ -98,14 +98,7 @@ export default function Register() {
             onChange={handelChange}
           />
         </label>
-        <label htmlFor="Role">
-          <input
-            type="checkbox"
-            name="role"
-            value={1}
-            onChange={handelChange}
-          />{" "}
-        </label>
+       
 
         <button type="submit">Register</button>
       </form>
