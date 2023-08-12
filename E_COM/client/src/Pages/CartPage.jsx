@@ -6,7 +6,7 @@ import { BrainTreeContext } from "../Context/BrainTreeContext";
 import DropIn from "braintree-web-drop-in-react";
 import "../CSS/CartPage.css"
 import Layout from "../Components/Layout"
-
+import {useNavigate} from"react-router-dom"
 
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,6 +16,8 @@ import 'react-toastify/dist/ReactToastify.css';
 const notify = (message) => toast(message);
 
 export default function CartPage() {
+
+  const navigate=useNavigate()
 
   const [instance, setInstance] = useState("");
 
@@ -53,14 +55,14 @@ export default function CartPage() {
   // console.log("cart data",state.cart)
   let sum = 0;
   const TotalPrice = () => {
-    cart.map((item) => {
-      sum += item.ProductId.price * item.count;
+    cart?.map((item) => {
+      sum += item?.ProductId.price * item?.count;
     });
   };
 
   useEffect(() => {
     getCartData();
-  }, [UserId,cart]);
+  }, [UserId]);
 
   
 
@@ -100,7 +102,7 @@ export default function CartPage() {
         ProccedOrder = true;
         setPaymentDrop(false)
         console.log(cart)
-        Userdispatch({type:"MAKECARTEMPTY",payload:[]})
+        Userdispatch({type:"MAKECARTEMPTY"})
         console.log(cart)
 
 
@@ -138,35 +140,38 @@ export default function CartPage() {
     }
   };
 
-  console.log("token of brain tree", clientToken);
+  // console.log("token of brain tree", clientToken);
 
-  // useEffect(() => {
-  //   if (cart.length < 1) {
-  //     navigate("/");
-  //   }
-  // }, []);
+  useEffect(() => {
+    // if (cart.length < 1) {
+    //   setTimeout(() => {
+    //     navigate("/shop");
+        
+    //   }, 2000);
+    // }
+  }, []);
 
   return (
     <>
     <Layout title="Cart" para="Happpy shopping"></Layout>
       
     {
-      cart.length>0 ?  <div className="cart_main_div">
+      cart?.length>0 ?  <div className="cart_main_div">
         
       
       <div className="Cart_div">
 
       
-{cart.map((item) => {
-  console.log("map data", item.ProductId.name);
+{cart?.map((item) => {
+  // console.log("map data", item.ProductId.name);
   
   return (
     <>
       <CartCard
-        id={item.ProductId._id}
-        name={item.ProductId.name}
-        count={item.count}
-        price={item.ProductId.price}
+        id={item?.ProductId._id}
+        name={item?.ProductId.name}
+        count={item?.count}
+        price={item?.ProductId.price}
         ></CartCard>
     </>
   );

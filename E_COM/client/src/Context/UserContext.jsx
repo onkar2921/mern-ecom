@@ -35,7 +35,7 @@ export function UserContextProvider({children}){
             })
             if(response.status===200){
             
-                Userdispatch({type:"SETUSER",payload:response.data.User})
+                Userdispatch({type:"SETUSER",payload:response?.data.User})
                 // Userdispatch({type:"SETHISTORY",payload:response.data.User.history.products})
             }
             

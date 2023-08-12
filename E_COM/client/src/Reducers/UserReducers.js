@@ -60,11 +60,11 @@ export const UserReducer = (state, action) => {
       };
 
     case "MAKECARTEMPTY":
-      alert(state.cart);
+      alert("hitting empty")
+      
       // alert("empty")
       return {
-        ...state,
-        cart: action.payload,
+        state:[]
       };
 
     default:
