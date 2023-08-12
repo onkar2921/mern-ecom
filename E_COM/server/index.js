@@ -81,9 +81,9 @@ app.post('/upload', (req, res) => {
   
 
 
-  app.use("/",(req,res)=>{
-    res.send("helllo apsj")
-})
+//   app.use("/",(req,res)=>{
+//     res.send("helllo apsj")
+// })
 
 
 
