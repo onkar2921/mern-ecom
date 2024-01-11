@@ -82,7 +82,7 @@ app.post('/upload', (req, res) => {
 
   
 app.use("/",(req,res)=>{
-  return res.status(200).json("hi buddy ksiuermdjsy7e8r")
+   res.status(200).json("hi buddy ksiuermdjsy7e8r")
 })
 
 //   app.use("/",(req,res)=>{
